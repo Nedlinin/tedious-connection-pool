@@ -31,11 +31,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "tedious": "^1.14.0"
+    "tedious": "^3.0.1"
   },
   "devDependencies": {
-    "mocha": "^3.0.2",
-    "simple-statistics": "^2.1.0"
+    "mocha": "^5.2.0",
+    "simple-statistics": "^7.0.0"
   },
   "readmeFilename": "README.md",
   "bugs": {
