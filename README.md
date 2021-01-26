@@ -1,15 +1,16 @@
-# tedious-connection-pool
-[![Dependency Status](https://david-dm.org/tediousjs/tedious-connection-pool.svg)](https://david-dm.org/tediousjs/tedious-connection-pool)
-[![npm version](https://badge.fury.io/js/tedious-connection-pool.svg)](https://badge.fury.io/js/tedious-connection-pool)
-[![Build status](https://ci.appveyor.com/api/projects/status/jnurb48ao1wrbgbr?svg=true)](https://ci.appveyor.com/project/ben-page/tedious-connection-pool)
+# tedious-connection-pool2
+
+Forked from https://github.com/tediousjs/tedious-connection-pool/pull/45 which never got merged to upstream `master`.
 
 
 A connection pool for [tedious](http://github.com/tediousjs/tedious).
 
 ## Installation
 
-    npm install tedious-connection-pool
-    
+    npm install tedious-connection-pool2
+
+  Note: You also need to install a supported version of Tedious in your project as Tedious is defined as a peer dependency here.    
+
 ## Description
 The only difference from the regular tedious API is how the connection is obtained and released. Rather than creating a connection and then closing it when finished, acquire a connection from the pool and release it when finished. Releasing resets the connection and makes in available for another use.
 
@@ -18,7 +19,7 @@ Once the Tedious Connection object has been acquired, the tedious API can be use
 ## Example
 
 ```javascript
-var ConnectionPool = require('tedious-connection-pool');
+var ConnectionPool = require('tedious-connection-pool2');
 var Request = require('tedious').Request;
 
 var poolConfig = {
@@ -75,6 +76,9 @@ pool.drain();
 
 
 ## Class: ConnectionPool
+
+### ConnectionPool.overrideTedious(tedious)
+Create connections using specified tedious module rather than ConnectionPool's default version of tedious.
 
 ### new ConnectionPool(poolConfig, connectionConfig)
 
