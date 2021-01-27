@@ -29,9 +29,15 @@ var poolConfig = {
 };
 
 var connectionConfig = {
-    userName: 'login',
-    password: 'password',
-    server: 'localhost'
+    server: 'localhost',
+    authentication: {
+        type: 'default',
+        options: {
+            userName: 'login',
+            password: 'password'
+        }
+    }
+   
 };
 
 //create the pool
