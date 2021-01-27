@@ -10,7 +10,7 @@ A connection pool for [tedious](http://github.com/tediousjs/tedious).
     npm install tedious-connection-pool2
 
   Note: You also need to install a supported version of Tedious in your project as Tedious is defined as a peer dependency here.    
-  ("tedious": ">= 3.8.0") supported.
+  tedious>=8.3.0 is currently supported.
 ## Description
 The only difference from the regular tedious API is how the connection is obtained and released. Rather than creating a connection and then closing it when finished, acquire a connection from the pool and release it when finished. Releasing resets the connection and makes in available for another use.
 
