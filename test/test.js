@@ -69,7 +69,7 @@ describe('ConnectionPool', function () {
         const pool = new ConnectionPool(poolConfig, connectionConfig);
 
         setTimeout(function() {
-            assert.equal(pool.connections.length, poolConfig.min);
+            assert.strictEqual(pool.connections.length, poolConfig.min);
             pool.drain().then(done);
         }, 4);
     });
@@ -81,7 +81,7 @@ describe('ConnectionPool', function () {
         const pool = new ConnectionPool(poolConfig, connectionConfig);
 
         setTimeout(function() {
-            assert.equal(pool.connections.length, 0);
+            assert.strictEqual(pool.connections.length, 0);
         }, 4);
 
         setTimeout(function() {
@@ -92,7 +92,7 @@ describe('ConnectionPool', function () {
                     assert.strictEqual(rowCount, 1);
                     connection.release();
                     setTimeout(function () {
-                        assert.equal(pool.connections.length, 0);
+                        assert.strictEqual(pool.connections.length, 0);
                         pool.drain().then(done);
                     }, 200);
                 });
@@ -152,7 +152,7 @@ describe('ConnectionPool', function () {
         const pool = new ConnectionPool(poolConfig, connectionConfig);
 
         setTimeout(function() {
-            assert.equal(pool.connections.length, 1);
+            assert.strictEqual(pool.connections.length, 1);
         }, 4);
 
         setTimeout(function() {
@@ -163,7 +163,7 @@ describe('ConnectionPool', function () {
                     assert.strictEqual(rowCount, 1);
                     connection.release();
                     setTimeout(function () {
-                        assert.equal(pool.connections.length, 1);
+                        assert.strictEqual(pool.connections.length, 1);
                         pool.drain().then(done);
                     }, 200);
                 });
@@ -184,7 +184,7 @@ describe('ConnectionPool', function () {
         const pool = new ConnectionPool(poolConfig, connectionConfig);
 
         setTimeout(function() {
-            assert.equal(pool.connections.length, 1);
+            assert.strictEqual(pool.connections.length, 1);
         }, 4);
 
         setTimeout(function() {
@@ -195,7 +195,7 @@ describe('ConnectionPool', function () {
                     assert.strictEqual(rowCount, 1);
                     connection.release();
                     setTimeout(function () {
-                        assert.equal(pool.connections.length, 1);
+                        assert.strictEqual(pool.connections.length, 1);
                         pool.drain().then(done);
                     }, 200);
                 });
@@ -242,7 +242,7 @@ describe('ConnectionPool', function () {
                 }
             }
 
-            assert.equal(pool.connections.length, poolConfig.min);
+            assert.strictEqual(pool.connections.length, poolConfig.min);
             pool.drain().then(done);
         }
 
@@ -263,7 +263,7 @@ describe('ConnectionPool', function () {
         pool.acquire(function(err, connection) {
             assert(!!err);
             assert(!connection);
-            done();
+            pool.drain().then(done)
         });
     });
 
@@ -380,7 +380,7 @@ describe('ConnectionPool', function () {
         pool.acquire(function() { });
 
         setTimeout(function() {
-            assert.equal(pool.connections.length, poolConfig.min);
+            assert.strictEqual(pool.connections.length, poolConfig.min);
             pool.drain().then(done);
         }, 4);
     });
